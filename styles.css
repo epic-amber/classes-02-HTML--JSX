@@ -29,7 +29,7 @@ body {
     gap: 24px; /* Space between cards */
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* Same height for all cards in the row */
     overflow-x: auto; /* Horizontal scroll if viewport is narrow (e.g. 3 cards) */
 }
 
@@ -152,6 +152,19 @@ body {
     background-color: #333;
 }
 
+.download-button.tertiary {
+    background-color: transparent;
+    border: 1px solid #cad1a4;
+    color: #333;
+}
+
+.download-button.tertiary:hover {
+    background-color: #e9e6d9;
+}
+
+.download-button.tertiary:active {
+    background-color: #f2f1ed;
+}
 /* --------------------------------------------------------------------------
    Page label — fixed badge at top center (dev/demo only)
    -------------------------------------------------------------------------- */
