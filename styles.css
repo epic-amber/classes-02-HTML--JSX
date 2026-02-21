@@ -29,7 +29,7 @@ body {
     gap: 24px; /* Space between cards */
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* Same height for all cards in the row */
     overflow-x: auto; /* Horizontal scroll if viewport is narrow (e.g. 3 cards) */
 }
 
@@ -150,6 +150,21 @@ body {
 
 .download-button.primary:active {
     background-color: #333;
+}
+
+/* Tertiary — low emphasis: transparent with border */
+.download-button.tertiary {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #D8D6CE;
+}
+
+.download-button.tertiary:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.download-button.tertiary:active {
+    background-color: rgba(0, 0, 0, 0.08);
 }
 
 /* --------------------------------------------------------------------------

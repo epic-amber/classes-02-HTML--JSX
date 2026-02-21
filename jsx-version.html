@@ -24,14 +24,18 @@
 
         // Same card UI, written as a JSX component (HTML-like syntax inside JavaScript)
         // This component is reusable - we can create multiple cards by passing different data
-        function PricingCard({ title, price, includesText, features, buttonText, buttonVariant }) {
+        function PricingCard({ title, priceAmount, pricePeriod, includesText, features, buttonText, buttonVariant }) {
             return (
                 // JSX uses "className" instead of "class" because "class" is a reserved word in JavaScript
+                // Structure matches index.html: card-top, h3 title, price amount + period in spans
                 <div className="card">
-                    {/* Curly braces { } let you insert JavaScript expressions into JSX */}
-                    <h1 className="card-title">{title}</h1>
-                    <p className="card-price">{price}</p>
-                    <div className="card-content">
+                    <div className="card-top">
+                        <h3 className="card-title">{title}</h3>
+                        <p className="card-price">
+                            <span className="card-price-amount">{priceAmount}</span>
+                            <span className="card-price-period">{pricePeriod ?? ''}</span>
+                        </p>
+                        <div className="card-content">
                         <p className="includes-text">{includesText}</p>
                         <ul className="features-list">
                             {/* .map() loops through the features array and creates a <li> for each item */}
@@ -43,6 +47,7 @@
                                 </li>
                             ))}
                         </ul>
+                        </div>
                     </div>
                     {/* Using our Button component instead of a raw <button> element */}
                     <Button label={buttonText} variant={buttonVariant} />
@@ -55,15 +60,17 @@
             // These objects hold all the content for each pricing card
             const hobbyPlan = {
                 title: 'Hobby',
-                price: 'Free',
+                priceAmount: 'Free',
+                pricePeriod: null,
                 includesText: 'Includes:',
                 features: ['No credit card required', 'Limited Agent requests', 'Limited Tab completions'],
                 buttonText: 'Download',
-                buttonVariant: 'secondary',
+                buttonVariant: 'tertiary',
             };
             const proPlan = {
                 title: 'Pro',
-                price: '$20/mo.',
+                priceAmount: '$20',
+                pricePeriod: '/mo.',
                 includesText: 'Everything in Hobby, plus:',
                 features: [
                     'Extended limits on Agent',
@@ -72,6 +79,24 @@
                     'Maximum context windows',
                 ],
                 buttonText: 'Get Pro',
+                buttonVariant: 'primary',
+            };
+            const organizationPlan = {
+                title: 'Organization',
+                priceAmount: '$59',
+                pricePeriod: '/mo.',
+                includesText: 'Everything in Pro, plus:',
+                features: [
+                    'Unlimited Agents',
+                    'Unlimited Tab completions',
+                    'Background Agents',
+                    'Maximum context windows',
+                    'SSO and advanced security',
+                    'Dedicated support',
+                    'Custom SLA',
+                    'Team and usage analytics',
+                ],
+                buttonText: 'Get Organization',
                 buttonVariant: 'primary',
             };
 
@@ -84,6 +109,7 @@
                         {/* This is the same as writing: title="Hobby" price="Free" includesText="Includes:" etc. */}
                         <PricingCard {...hobbyPlan} />
                         <PricingCard {...proPlan} />
+                        <PricingCard {...organizationPlan} />
                     </div>
                 </>
             );

@@ -17,7 +17,7 @@ function Pricing() {
         includesText: 'Includes:',
         features: ['No credit card required', 'Limited Agent requests', 'Limited Tab completions'],
         buttonText: 'Download',
-        buttonVariant: 'secondary',
+        buttonVariant: 'tertiary',
     };
     const proPlan = {
         title: 'Pro',
