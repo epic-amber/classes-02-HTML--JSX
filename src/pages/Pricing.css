@@ -7,6 +7,6 @@
     gap: 24px;
     flex-wrap: nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: stretch; /* Same height for all cards in the row */
     overflow-x: auto; /* Scroll horizontally when 3 cards don't fit */
 }
