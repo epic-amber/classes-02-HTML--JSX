@@ -1,12 +1,18 @@
+/* ==========================================================================
+   Base reset — consistent spacing and box model across browsers
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* --------------------------------------------------------------------------
+   Page layout — centered content, full-height background
+   -------------------------------------------------------------------------- */
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f7f7f4;
+    background-color: #f7f7f4; /* Page background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,20 +20,27 @@ body {
     padding: 20px;
 }
 
+/* --------------------------------------------------------------------------
+   Cards container — horizontal row of pricing cards
+   -------------------------------------------------------------------------- */
 .cards-container {
     display: flex;
     flex-direction: row;
-    gap: 24px;
+    gap: 24px; /* Space between cards */
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-start;
+    overflow-x: auto; /* Horizontal scroll if viewport is narrow (e.g. 3 cards) */
 }
 
+/* --------------------------------------------------------------------------
+   Single card — fixed width, vertical layout, sticky button at bottom
+   -------------------------------------------------------------------------- */
 .card {
     display: flex;
     flex-direction: column;
     min-height: 380px;
-    background-color: #f2f1ed;
+    background-color: #f2f1ed; /* Card surface */
     border-radius: 4px;
     padding: 16px;
     width: 320px;
@@ -39,17 +52,19 @@ body {
     flex-direction: column;
 }
 
+/* Card title (plan name) */
 .card-title {
     font-size: 22px;
     line-height: 28px;
     font-weight: 400;
-    color: #26251e;
+    color: #26251e; /* Primary text */
     margin-bottom: 8px;
 }
 
+/* Price row — amount and period on same baseline */
 .card-price {
     font-size: 20px;
-    color: rgba(38, 37, 30, 0.5);
+    color: rgba(38, 37, 30, 0.5); /* Muted */
     display: inline-flex;
     align-items: baseline;
 }
@@ -65,16 +80,19 @@ body {
     color: rgba(38, 37, 30, 0.5);
 }
 
+/* Block between price and button (includes + list) */
 .card-content {
     margin-bottom: 32px;
 }
 
+/* "Includes:" / "Everything in Hobby, plus:" label */
 .includes-text {
     font-size: 16px;
     color: rgba(38, 37, 30, 0.5);
     margin: 16px 0px;
 }
 
+/* Feature list — no bullets, checkmark + text per row */
 .features-list {
     list-style: none;
     padding: 0;
@@ -95,12 +113,15 @@ body {
     font-weight: 400;
 }
 
+/* --------------------------------------------------------------------------
+   Buttons — pill shape; secondary = light, primary = dark
+   -------------------------------------------------------------------------- */
 .download-button {
-    margin-top: auto;
+    margin-top: auto; /* Pushed to bottom of card */
     width: fit-content;
-    background-color: #e6e5e0;
+    background-color: #e6e5e0; /* Secondary default */
     border: none;
-    border-radius: 999px;
+    border-radius: 999px; /* Pill */
     padding: 14px 24px;
     font-size: 16px;
     font-weight: 500;
@@ -117,6 +138,7 @@ body {
     background-color: #D8D6CE;
 }
 
+/* Primary (Pro) button — dark background */
 .download-button.primary {
     background-color: #111;
     color: #fff;
@@ -130,6 +152,9 @@ body {
     background-color: #333;
 }
 
+/* --------------------------------------------------------------------------
+   Page label — fixed badge at top center (dev/demo only)
+   -------------------------------------------------------------------------- */
 .page-label {
     position: fixed;
     top: 16px;
